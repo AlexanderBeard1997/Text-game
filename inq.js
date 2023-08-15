@@ -1,11 +1,7 @@
 console.clear();
 
 import inquirer from "inquirer";
-// import Kitchen from "./rooms.js";
-// import Breakroom from "./rooms.js";
-//module.imports = {
-//   rooms.js
-//}
+
 
 export const getName = async () => {
     let {userName} = await inquirer.prompt({
@@ -45,22 +41,37 @@ export const getName = async () => {
    })
   }
 
- export const selectType = async () => {
-   let userChoice = await inquirer.prompt({
-   name: `choice`,   
+ export const selectType1 = async () => {
+   let choice1 = await inquirer.prompt({
+   name: `choice1`,   
    type: `list`,
    message: `you can either enter the Breakroom or the Kitchen."`,
-   choices : [ `Breakroom` , `Kitchen `],
+   choices : [ `Breakroom` , `Kitchen`],
    })
-
+   return choice1.choice1
    
  }
  
-//   .then((answers)=>{
-//      if(answers.selectType === "Breakroom"){
-//         console.log(`vfgsdga`)
-//        } else if(answers.selectType === "Kitchen"){
-//          console.log(`hgfhdgf`)
-//        }
-//       })
+ export const selectType2 = async () => {
+   let choice2 = await inquirer.prompt({
+   name: `choice2`,   
+   type: `list`,
+   message: `you can either Go to the crop room or the oxygen storage room."`,
+   choices : [ `Crop Room` , `Oxygen Storage Room`],
+   })
+   return choice2.choice2
+   
+ }
+
+ export const selectType3 = async () => {
+   let choice3 = await inquirer.prompt({
+   name: `choice3`,   
+   type: `list`,
+   message: `you can either enter the Toilet or the Bunks."`,
+   choices : [ `Toilet` , `Bunks`],
+   })
+   return choice3.choice3
+   
+ }
+
 
