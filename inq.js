@@ -1,13 +1,16 @@
 console.clear();
 
 import inquirer from "inquirer";
+import * as rooms from "./rooms.js";
+import * as classes from "./classes.js";
 
+export let hasGloves = false
 
 export const getName = async () => {
   let { userName } = await inquirer.prompt({
     name: `userName`,
     type: `input`,
-    message: `What is your name?`,
+    message: `What is your name?`
   })
   return userName
 }
@@ -21,56 +24,99 @@ export const getShip = async () => {
   return ship
 }
 
-export const selectType = async () => {
-  let choice = await inquirer.prompt({
-    name: `choice`,
+export const selectTypeStart = async () => {
+  let choice1 = await inquirer.prompt({
+    name: `choice1`,
     type: `list`,
     message: `you can either enter the Breakroom or the Kitchen."`,
     choices: [`Breakroom`, `Kitchen`],
   })
-  return choice.choice
+  return choice1.choice1
 }
 
-export const selectType2 = async () => {
-  let choice = await inquirer.prompt({
-    name: `choice`,
+export const type = Object.assign(Room.stats, selectTypeStart);
+
+export const selectTypeKitchen = async () => {
+  let choice2 = await inquirer.prompt({
+    name: `choice2`,
     type: `list`,
-    message: `you can either enter the Toilet or the Bunks."`,
-    choices: [`Toilet`, `Bunks`],
+    message: `you can either Go to the crop room or the oxygen storage room."`,
+    choices: [`Go Forwards`, `Go Left`, `Eat the cake`],
   })
-  return choice.choice
+  return choice2.choice2
+
 }
 
-export const selectType3 = async () => {
-  let choice = await inquirer.prompt({
-    name: `choice`,
+export const selectTypeBreakroom = async () => {
+  let choice3 = await inquirer.prompt({
+    name: `choice3`,
     type: `list`,
-    message: `you can either enter the Farm or the Life Support."`,
-    choices: [`Farm`, `Life Support`],
+    message: `you can either enter the Toilet or try to fix the Panel."`,
+    choices: [`Toilet`, `Panel`, `Search`],
   })
-  return choice.choice
-
+  return choice3.choice3
+}
+export const selectTypeOxy = async () => {
+  let choice4 = await inquirer.prompt({
+    name: `choice4`,
+    type: `list`,
+    message: `You can try to fix the leak by "`,
+    choices: [`Shutoff oxygen`, `Use Tape`, `Use Foam`],
+  })
+  return choice4.choice4
 }
 
-
-export const Kitchen = () => {
-  console.log(`the kitchen is a mess dishes have shattered and the broken shards are strewn about all ocer the floor. `),
-    console.log(`The rations have been spilled, resulting in large puddles of liquid and mounds of food.`),
-    console.log(`Smoke is billowing out from underneath the door to your left, and the one in front of you`),
-    console.log(`There is a delicious cake on the counter. It is a chocolate gateau with chocolate curls and a strawberry on top of it.`)
-  selectType3()
-  return Kitchen
+export const selectTypeCryo = async () => {
+  let choice5 = await inquirer.prompt({
+    name: `choice5`,
+    type: `list`,
+    message: `you can either try to rerout the coolant or search for something to fix the leak."`,
+    choices: [`Reroute coolant`, `Search`],
+  })
+  return choice5.choice5
 }
 
-export const Breakroom = () => {
-  console.log(`The Break Room is small; it has enough furnishings for a single person.`),
-    console.log(`There is a table where spare equipment has been discarded haphazardly.`),
-    console.log(`there is a door to the left leading to a small washroom it and a door on the right the panel looks broken `)
-  selectType2()
-  return Breakroom
+export const findGloves = async () => {
+
+  if (!hasGloves) {
+    console.log("You find a pair of insulated gloves");
+    rooms.breakroom();
+
+    hasGloves = true;
+  } else {
+    console.log("You find nothing of value");
+    rooms.breakroom()
+  }
+};
+
+export const cropfarmSelect = async () =>{
+  let cropfarmSelect = await inquirer.prompt({
+    name: `cropfarmSelect`,
+    type: `list`,
+    message: `If don't put out the fire, the entire ship will burn, and you will lose your food and oxygen and die. What do you do?`,
+    choices: [`Let it burn baby, burn`, `Shut down the oxygen supply`,`Fire Extinguisher`]
+  })
+ return cropfarmSelect.cropfarmSelect
 }
-export const cake = () => {
-  console.log('Die Horribly You eat too much cake as it is irresistibly delicious. Your stomach bursts, killing you instantly') 
-  console.log("the cake was a lie")
-  return cake
+
+export const selectTypeengine = async () => {
+  let engChoice = await inquirer.prompt({
+    name: `engChoice`,
+    type: `list`,
+    message: `did you get good or bad end"`,
+    choices: [`its good`, `its bad`],
+  })
+  return engChoice.engChoice
+}
+
+export const gameover = async () => {
+  console.log(`Sorry you failed try again`)
+}
+
+export const goodEnd = async () => {
+  console.log("congratulations")
+}
+
+export const badEnd = async () => {
+  console.log("you suck")
 }
