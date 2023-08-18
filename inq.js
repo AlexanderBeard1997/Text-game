@@ -2,8 +2,7 @@ console.clear();
 
 import inquirer from "inquirer";
 import * as rooms from "./rooms.js";
-import * as classes from "./classes.js";
-
+import * as  classes from "./classes.js";
 export let hasGloves = false
 
 export const getName = async () => {
@@ -31,10 +30,10 @@ export const selectTypeStart = async () => {
     message: `you can either enter the Breakroom or the Kitchen."`,
     choices: [`Breakroom`, `Kitchen`],
   })
-  return choice1.choice1
+  return choice1.choice1//.classes.oxygenCheck(1).classes.console.log(myRoom.oxygen)
 }
 
-export const type = Object.assign(Room.stats, selectTypeStart);
+// export const type = Object.assign(classes.stats1(), selectTypeStart());
 
 export const selectTypeKitchen = async () => {
   let choice2 = await inquirer.prompt({

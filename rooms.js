@@ -137,3 +137,38 @@ export const engineRoom = async () => {
         inq.badEnd()
     } else { console.log("Error") }
 }
+
+
+// class Situation {
+//     constructor() {
+//         roomName = "";
+//         description = "";
+//         choices = []
+
+//     }}
+
+// const kitchen = Situation(
+//     roomName = "Kitchen",
+//     description = "You are in the kitchen",
+//     choices = ["Cropfarm", "Oxygen Room"]
+// )
+
+// const Breakroom = Situation(
+//     roomName = "Breakroom",
+//     description = "You are in the kitchen",
+//     choices = ["Toilet", "Panel"]
+// )
+
+// userChoiceRoom = async () => {
+//     let userChoice = await inq.selectTypeKitchen()
+//     if ((userChoice) === kitchen.roomName) {
+//         console.log("You are in the " + kitchen.roomName + kitchen.description + "Where do you want to go next" + kitchen.choices)
+//         cropfarm()
+//     }
+//     // } else if ((userChoice) === "Go Forwards") {
+//     //     oxygenRoom()
+//     // } else if ((userChoice) === "Eat the cake"){
+//     //     eatCake()
+//     // } else { console.log("Error") }
+//     // return kitchen
+// }
